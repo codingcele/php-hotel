@@ -49,7 +49,9 @@
         
         ];
 
-        echo "<table class='table'>
+        ?>
+
+        <table class='table'>
             <thead>
                 <tr>
                     <th scope='col'>Name</th>
@@ -59,26 +61,33 @@
                     <th scope='col'>Distance to center</th>
                 </tr>
             </thead>
-            <tbody>";
+            <tbody>
+                <?php
 
-            foreach($hotels as $hotel) {
-                $name = $hotel["name"];
-                $description = $hotel["description"];
-                if ($hotel["parking"] == "true") {
-                    $parking = "SI";
-                }
-                else {
-                    $parking = "NO";
-                }
-                $vote = $hotel["vote"];
-                $distance = $hotel["distance_to_center"];
-    
-                echo "<tr>" . "<td>" . $name . "</td>" . "<td>" . $description . "</td>" . "<td>" . $parking . "</td>" . "<td>" . $vote . "</td>" . "<td>" . $distance . "</td>" . "</tr>";
-            }
+                    foreach($hotels as $hotel) {
+                        $name = $hotel["name"];
+                        $description = $hotel["description"];
+                        if ($hotel["parking"] == "true") {
+                            $parking = "YES";
+                        }
+                        else {
+                            $parking = "NO";
+                        }
+                        $vote = $hotel["vote"];
+                        $distance = $hotel["distance_to_center"] . " km";
 
-        echo "</tbody>
-            </table>";
-        
-    ?>
+                        echo "<tr>" 
+                                . "<td>" . $name . "</td>" 
+                                . "<td>" . $description . "</td>" 
+                                . "<td>" . $parking . "</td>" 
+                                . "<td>" . $vote . "</td>" 
+                                . "<td>" . $distance . "</td>" 
+                            . "</tr>";
+                    }
+
+                ?>
+            </tbody>
+        </table>
+
 </body>
 </html>
